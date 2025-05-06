@@ -101,23 +101,37 @@ class Program
         string[] corrdinates;
         x = -1;
         y = -1;
-        do
+        while(true)
         {
             Console.WriteLine("Введи ход в формате \"x y\"");
             coordinateString = Console.ReadLine();
-
-            corrdinates = coordinateString.Split(' ');
-            if (corrdinates.Length != 2)
+            
+            if (string.IsNullOrWhiteSpace(coordinateString))
             {
-                isCoordinatesCorrect = false;
+                Console.WriteLine("Нужно ввести данные в правильном формате  \"x y\"");
                 continue;
             }
             
-            Console.WriteLine("Координаты хода " + corrdinates);
+            corrdinates = coordinateString.Split(' ');
+            if (corrdinates.Length != 2)
+            {
+                Console.WriteLine("Нужно ввести данные в правильном формате  \"x y\"");
+                continue;
+            }
+            
+            Console.WriteLine($"Координаты хода: x = {x}, y = {y}");
 
-            x = int.Parse(corrdinates[0].ToString());
-            y = int.Parse(corrdinates[1].ToString());
-        } while ((coordinateString == null || coordinateString == "") && isCoordinatesCorrect);
+            x = int.Parse(corrdinates[0]);
+            y = int.Parse(corrdinates[1]);
+            
+            if (x < 0 || x > 2 || y < 0 || y > 2)
+            {
+                Console.WriteLine("Координаты должны быть в диапазоне от 0 до 2.");
+                continue;
+            }
+            
+            break;
+        }
     }
     
     static void Main(string[] args)

@@ -73,6 +73,14 @@ class Program
         return false;
     }
     
+    // Если нельзя делать ход, то возвращает false. Если ход можно делать то true
+    static bool ШsMoveAble(ref char[,] array, int x, int y)
+    {
+        Console.WriteLine(x + " " + y + " ");
+        if ((x < 0 || x > 2) || (y < 0 || y > 2)) return false;
+        return array[x, y] == '_' ? true : false;
+    }
+    
     static void Main(string[] args)
     {
         Console.WriteLine("Привет. Это игра крестики нолики!");

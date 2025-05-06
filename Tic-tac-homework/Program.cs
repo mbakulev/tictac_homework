@@ -155,5 +155,24 @@ class Program
             { '_', '_', '_' },
             { '_', '_', '_' }
         };
+        
+        while (!isGameFinished && turnNumber < 9)
+        {
+            if (order) Console.WriteLine("Ходит игрок " + playerOne);
+            if (!order) Console.WriteLine("Ходит игрок " + playerTwo);
+            int x = -1;
+            int y = -1;
+            
+            InputMoveCoordinates(out x, out y);
+            Console.WriteLine(x + " " + y);
+            
+            if (order) MakeMove(ref board, x, y, xSymbol);
+            if (!order) MakeMove(ref board, x, y, oSymbol);
+            ShowBoard(ref board);
+            order = !order;
+            isGameFinished = CheckVictory(board);
+            turnNumber++;
+        }
+        if (turnNumber == 9 && !isGameFinished) Console.WriteLine("НИЧЬЯ");
     }
 }

@@ -14,6 +14,65 @@ class Program
         }
     }
     
+    static bool CheckVictory(char[,] array)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (array[i, 0] == array[i, 1] && array[i, 1] == array[i, 2] && array[i, 2] == 'X')
+            {
+                Console.WriteLine("X Win");
+                return true;
+            }
+
+            if (array[i, 0] == array[i, 1] && array[i, 1] == array[i, 2] && array[i, 2] == 'O')
+            {
+                Console.WriteLine("O Win");
+                return true;
+            }
+        }
+        
+        for (int i = 0; i < 3; i++)
+        {
+            if (array[0, i] == array[1, i] && array[1, i] == array[2, i] && array[2, i] == 'X')
+            {
+                Console.WriteLine("X Win");
+                return true;
+            }
+
+            if (array[0, i] == array[1, i] && array[1, i] == array[2, i] && array[2, i] == 'O')
+            {
+                Console.WriteLine("O Win");
+                return true;
+            }
+        }
+
+        if (array[0, 0] == array[1, 1] && array[1, 1] == array[2, 2] && array[2, 2] == 'X')
+        {
+            Console.WriteLine("X Win");
+            return true;
+        }
+
+        if (array[0, 0] == array[1, 1] && array[1, 1] == array[2, 2] && array[2, 2] == 'O')
+        {
+            Console.WriteLine("O Win");
+            return true;
+        }
+
+        if (array[0, 2] == array[1, 1] && array[1, 1] == array[2, 0] && array[2, 0] == 'X')
+        {
+            Console.WriteLine("X Win");
+            return true;
+        }
+
+        if (array[0, 2] == array[1, 1] && array[1, 1] == array[2, 0] && array[2, 0] == 'O')
+        {
+            Console.WriteLine("O Win");
+            return true;
+        }
+
+        return false;
+    }
+    
     static void Main(string[] args)
     {
         Console.WriteLine("Привет. Это игра крестики нолики!");

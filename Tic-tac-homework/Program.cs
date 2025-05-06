@@ -23,5 +23,19 @@ class Program
         
         Console.WriteLine("Игрок 1 = " + playerOne);
         Console.WriteLine("Игрок 2 = " + playerTwo);
+        
+        // Очередность хода. true - первый, false - второй
+        bool order = true;
+        char xSymbol = 'X';
+        char oSymbol = 'O';
+        byte turnNumber = 0;
+        bool isGameFinished = false;
+        
+        char[,] board = new char[3, 3]
+        {
+            { '_', '_', '_' },
+            { '_', '_', '_' },
+            { '_', '_', '_' }
+        };
     }
 }

@@ -138,8 +138,8 @@ class Program
     {
         Console.WriteLine("Привет. Это игра крестики нолики!");
         
-        string playerOne = "1";
-        string playerTwo = "2";
+        string playerOne = "X";
+        string playerTwo = "Y";
         
         while (playerOne == null || playerOne == "")
         {
@@ -162,7 +162,7 @@ class Program
         char oSymbol = 'O';
         byte turnNumber = 0;
         bool isGameFinished = false;
-        
+        bool isTurnFinished = false;
         char[,] board = new char[3, 3]
         {
             { '_', '_', '_' },
@@ -179,9 +179,22 @@ class Program
             
             InputMoveCoordinates(out x, out y);
             Console.WriteLine(x + " " + y);
-            
-            if (order) MakeMove(ref board, x, y, xSymbol);
-            if (!order) MakeMove(ref board, x, y, oSymbol);
+
+            if (order)
+            {
+                isTurnFinished = MakeMove(ref board, x, y, xSymbol);
+            }
+            else
+            {
+                isTurnFinished = MakeMove(ref board, x, y, oSymbol);
+            }
+
+            if (!isTurnFinished)
+            {
+                Console.WriteLine("Выбериете пустую клетку");
+                continue;
+            }
+
             ShowBoard(ref board);
             order = !order;
             isGameFinished = CheckVictory(board);

@@ -93,6 +93,33 @@ class Program
         return false;
     }
     
+    static void InputMoveCoordinates(out int x, out int y)
+    {
+        
+        string coordinateString = null;
+        bool isCoordinatesCorrect = true;
+        string[] corrdinates;
+        x = -1;
+        y = -1;
+        do
+        {
+            Console.WriteLine("Введи ход в формате \"x y\"");
+            coordinateString = Console.ReadLine();
+
+            corrdinates = coordinateString.Split(' ');
+            if (corrdinates.Length != 2)
+            {
+                isCoordinatesCorrect = false;
+                continue;
+            }
+            
+            Console.WriteLine("Координаты хода " + corrdinates);
+
+            x = int.Parse(corrdinates[0].ToString());
+            y = int.Parse(corrdinates[1].ToString());
+        } while ((coordinateString == null || coordinateString == "") && isCoordinatesCorrect);
+    }
+    
     static void Main(string[] args)
     {
         Console.WriteLine("Привет. Это игра крестики нолики!");
